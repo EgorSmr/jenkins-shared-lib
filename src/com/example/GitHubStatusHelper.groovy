@@ -7,9 +7,9 @@ class GitHubStatusHelper {
   GitHubStatusHelper(script) {
     this.script = script
     if(script.env.JOB_NAME.split('/')[-1].contains('/PR-')) {
-       this.context = env.JOB_NAME.replaceAll(/-\d+$/, '')
+       this.context = script.env.JOB_NAME.replaceAll(/-\d+$/, '')
     } else {
-        this.context = env.JOB_NAME
+        this.context = script.env.JOB_NAME
     }
   }
 
