@@ -7,9 +7,9 @@ class GitHubStatusHelper {
   GitHubStatusHelper(script) {
     this.script = script
     if(script.env.JOB_NAME.split('/')[-1].contains('PR-')) {
-       this.context = script.env.JOB_NAME.replaceAll(/-\d+$/, '').toLowerCase()
+       this.context = "continuous-integration/jenkins/${script.env.JOB_NAME.replaceAll(/-\d+$/, '').toLowerCase()}"
     } else {
-        this.context = script.env.JOB_NAME
+        this.context = "continuous-integration/jenkins/${script.env.JOB_NAME}"
     }
   }
 
