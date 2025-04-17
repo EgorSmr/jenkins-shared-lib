@@ -2,11 +2,15 @@ package com.example
 
 class GitHubStatusHelper {
   def script
-  String context
+  def context
 
-  GitHubStatusHelper(script, String context = null) {
+  GitHubStatusHelper(script) {
     this.script = script
-    this.context = context ?: script.env.BRANCH_NAME
+    if(script.env.JOB_NAME.split('/')[-1].contains('/PR-')) {
+       this.context = env.JOB_NAME.replaceAll(/-\d+$/, '')
+    } else {
+        this.context = env.JOB_NAME
+    }
   }
 
   private String getRepoURL() {
