@@ -1,4 +1,4 @@
-package org.example
+package com.example
 
 class GitHubStatusHelper {
   def script
