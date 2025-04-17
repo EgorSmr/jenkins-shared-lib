@@ -4,7 +4,7 @@ class GitHubStatusHelper {
   def script
   String context
 
-  GitHubStatusHelper(script, String context = ${env.BRANCH_NAME}) {
+  GitHubStatusHelper(script, String context = env.BRANCH_NAME) {
     this.script = script
     this.context = context
   }
