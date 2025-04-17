@@ -4,9 +4,9 @@ class GitHubStatusHelper {
   def script
   String context
 
-  GitHubStatusHelper(script, String context = env.BRANCH_NAME) {
+  GitHubStatusHelper(script, String context = null) {
     this.script = script
-    this.context = context
+    this.context = context ?: script.env.BRANCH_NAME
   }
 
   private String getRepoURL() {
